@@ -1,0 +1,475 @@
+Problem 1 Test: Store the first N records of the dataset in a custom object
+
+Test 1: If N equals the dataset size
+
+Arrange: Identify the dataset with 5 records. Choose N = 5. Have a custom object prepared to store records.
+
+Act: Store the first N records from the dataset into the custom object.
+
+Assert: The custom object should contain all 5 records, in the same order as in the dataset.
+
+Test 2: If N is larger than the dataset size
+
+Arrange: Identify the dataset with 4 records. Choose N = 10. Have a custom object prepared to store records.
+
+Act: Attempt to store the first N records from the dataset into the custom object.
+
+Assert: The custom object should contain all 4 available records (not 10).
+
+
+
+Problem 3 Test: Display a horizontal text-based histogram of the ages
+
+Test 1: Basic multi-age histogram
+
+Arrange: Dataset of client ages: [10, 12, 10, 11]. Use * as the bar character.
+
+Act: Generate and print the histogram (one line per age present, ascending).
+
+Assert: The printed histogram should be exactly:
+10: **
+11: *
+12: *
+
+Test 2: Single-age dataset
+
+Arrange: Dataset of client ages: [7, 7, 7]. Use * as the bar character.
+
+Act: Generate and print the histogram.
+
+Assert: The printed histogram should be exactly:
+
+7: ***
+
+Test 3: Empty dataset (no valid ages)
+
+Arrange: Dataset of client ages: [] (empty).
+
+Act: Attempt to generate and print the histogram.
+
+Assert: The program should print:
+
+No data to display.
+
+Test 4: Dataset includes invalid/negative ages which must be ignored
+
+Arrange: Dataset of client ages: [-1, 10, 10, -5, 11]. Negative ages are invalid and should be ignored by the histogram logic. Use * as the bar character.
+
+Act: Filter out invalid ages, generate and print the histogram for the remaining ages.
+
+Assert: The printed histogram should be exactly:
+
+10: **
+11: *
+
+
+Problem 5 Test: Total number of records for each number of children
+
+Test 1: If number of children is zero
+
+Arrange: Identify the ages of the clients in the dataset. Choose a cutoff age for what counts as a child. Create a total variable to track the number of clients who are children. In this dataset, all ages are above the cutoff age.
+
+Act: Count the total number of clients whose ages are greater than 0 and less than or equal to the cutoff age.
+
+Assert: The total number of records for children is: 0.
+
+Test 2: Multiple children of varying ages
+
+Arrange: Identify the ages of the clients in the dataset (for example: 5, 7, 17, 25, 30). Choose a cutoff age of 17. Create a total variable to track the number of clients who are children.
+
+Act: Count the total number of clients whose ages are greater than 0 and less than or equal to 17.
+
+Assert: The total number of records for children is: 3.
+
+
+Problem 7 Test: Determine if the dataset is “fair”
+
+Test 1: Perfectly balanced dataset
+
+Arrange: Identify the dataset of records grouped by region. Suppose there are 100 total records, evenly split across 4 regions (25 per region).
+
+Act: Compare the percentage of records in each region.
+
+Assert: Since all regions have exactly 25%, the differences are 0%, which is within the 5% tolerance. The data is fair.Problem 7 Test: Determine if the dataset is “fair”
+
+
+Test 2: Slight imbalance within 5%
+
+Arrange: Identify the dataset of 100 records, split across 2 regions: Region A = 52 records, Region B = 48 records.
+
+Act: Compare the percentage of records per region. Region A = 52%, Region B = 48%.
+
+Assert: The difference is 4%, which is within the 5% tolerance. The data is fair.
+
+Test 3: Multiple regions with one outlier
+
+Arrange: Identify the dataset of 100 records across 3 regions: Region A = 30, Region B = 33, Region C = 37.
+
+Act: Compare the percentage of records per region. A = 30%, B = 33%, C = 37%.
+
+Assert: The largest difference is 7% (30% vs. 37%), which exceeds the 5% tolerance. The data is not fair.
+
+Test 4: Empty dataset
+
+Arrange: Identify the dataset with 0 records across all regions.
+
+Act: Attempt to calculate fairness.
+
+Assert: With no data available, fairness cannot be determined. The program should either report “No data available” or treat the dataset as not fair.
+
+Problem 9 Test: Compare charge ranges for BMI groups
+
+Test 1: BMI 30–45 range is clearly larger
+
+Arrange: Identify dataset of charges grouped by BMI:
+
+Group 1 (<30): charges [1000, 1500] → range = 500
+
+Group 2 (30–45): charges [2000, 4000] → range = 2000
+
+Group 3 (>45): charges [3000, 3500] → range = 500
+
+Act: Calculate the charge range for each BMI group and compare them.
+
+Assert: Group 2’s range (2000) is greater than both Group 1 (500) and Group 3 (500). The statement is true.
+
+Test 2: BMI 30–45 range is not the largest
+
+Arrange: Identify dataset of charges grouped by BMI:
+
+Group 1 (<30): charges [1000, 4000] → range = 3000
+
+Group 2 (30–45): charges [2000, 3500] → range = 1500
+
+Group 3 (>45): charges [2500, 3000] → range = 500
+
+Act: Calculate the charge range for each BMI group and compare them.
+
+Assert: Group 1’s range (3000) is greater than Group 2 (1500). The statement is false.
+
+Test 3: All groups have equal ranges
+
+Arrange: Identify dataset of charges grouped by BMI:
+
+Group 1 (<30): charges [1000, 2000] → range = 1000
+
+Group 2 (30–45): charges [3000, 4000] → range = 1000
+
+Group 3 (>45): charges [5000, 6000] → range = 1000
+
+Act: Calculate the charge range for each BMI group and compare them.
+
+Assert: All groups have the same range (1000). The statement is false, because the 30–45 group is not greater.
+
+
+Problem 11 Test: Do smokers have higher charges and a wider range than non-smokers?
+
+Test 1: Smokers have both higher mean and wider range (hypothesis true)
+
+Arrange: Create a dataset split by smoker status with charges:
+
+Smokers: [5000, 7000, 9000] → mean = 7000, range = 4000
+
+Non-smokers: [1000, 2000, 3000] → mean = 2000, range = 2000
+
+Act: Calculate mean and range for smokers and non-smokers; compare smoker mean > non-smoker mean AND smoker range > non-smoker range.
+
+Assert: Both conditions hold (7000 > 2000 and 4000 > 2000). The hypothesis is true for this dataset.
+
+Test 2: Smokers have higher mean but not a wider range (hypothesis false)
+
+Arrange: Create a dataset:
+
+Smokers: [4000, 5000, 6000] → mean = 5000, range = 2000
+
+Non-smokers: [1000, 3000, 5000] → mean = 3000, range = 4000
+
+Act: Calculate mean and range for both groups and compare.
+
+Assert: Smoker mean > non-smoker mean (5000 > 3000) but smoker range < non-smoker range (2000 < 4000). Because the hypothesis requires both higher mean and wider range, the hypothesis is false for this dataset.
+
+Test 3: Smokers have wider range but not higher mean (hypothesis false)
+
+Arrange: Create a dataset:
+
+Smokers: [1000, 9000] → mean = 5000, range = 8000
+
+Non-smokers: [4000, 4500, 5000] → mean = 4500, range = 1000
+
+Act: Calculate mean and range for both groups and compare.
+
+Assert: Smoker range > non-smoker range (8000 > 1000) but smoker mean > non-smoker mean is only slightly true (5000 > 4500) — if mean is greater, both conditions might hold; to demonstrate the opposite, change numbers so mean is not greater. (Alternate example below.)
+
+Alternate Arrange (means not higher):
+
+Smokers: [1000, 9000] (mean 5000)
+
+Non-smokers: [6000, 6000] (mean 6000, range 0)
+
+Act: Recalculate.
+
+Assert (alternate): Smoker range > non-smoker range (8000 > 0) but smoker mean < non-smoker mean (5000 < 6000). The hypothesis is false.
+
+
+Problem 13 Test: Compare average BMI of smokers vs. non-smokers
+
+Test 1: Smokers have lower average BMI (statement true)
+
+Arrange: Dataset with BMI values:
+
+Smokers: [20, 22, 24] → mean = 22
+
+Non-smokers: [28, 30, 32] → mean = 30
+
+Act: Calculate the mean BMI for smokers and non-smokers.
+
+Assert: Since 22 < 30, the output should be:
+The statement is true: smokers average lower BMI than non-smokers.
+
+Test 2: Smokers have higher average BMI (statement false)
+
+Arrange: Dataset with BMI values:
+
+Smokers: [29, 30, 31] → mean = 30
+
+Non-smokers: [22, 24, 26] → mean = 24
+
+Act: Calculate the mean BMI for smokers and non-smokers.
+
+Assert: Since 30 > 24, the output should be:
+The statement is false: smokers do not average lower BMI than non-smokers.
+
+Test 3: Smokers and non-smokers have equal average BMI (statement false)
+
+Arrange: Dataset with BMI values:
+
+Smokers: [25, 27, 29] → mean = 27
+
+Non-smokers: [26, 28, 27] → mean = 27
+
+Act: Calculate the mean BMI for smokers and non-smokers.
+
+Assert: Since 27 = 27, the statement is false. Output should be:
+The statement is false: smokers do not average lower BMI than non-smokers.
+
+
+Problem 15 Test: Sort 4 regions by average charges in descending order
+
+Test 1: Distinct averages
+
+Arrange: Dataset of charges by region:
+
+Northeast: [1000, 2000, 3000] → mean = 2000
+
+Northwest: [5000, 7000] → mean = 6000
+
+Southeast: [4000, 6000, 8000] → mean = 6000
+
+Southwest: [2000, 3000] → mean = 2500
+
+Act: Calculate average charges for each region and sort in descending order.
+
+Assert: Expected order (one valid example):
+Northwest, Southeast, Southwest, Northeast
+
+Test 2: One region has the highest average clearly
+
+Arrange: Dataset:
+
+Northeast: [1000, 2000] → mean = 1500
+
+Northwest: [7000, 8000] → mean = 7500
+
+Southeast: [4000, 4500] → mean = 4250
+
+Southwest: [3000, 3500] → mean = 3250
+
+Act: Calculate averages and sort descending.
+
+Assert: Output should be:
+Northwest, Southeast, Southwest, No
+
+Test 3: Two regions tied for the same average
+
+Arrange: Dataset:
+
+Northeast: [2000, 4000] → mean = 3000
+
+Northwest: [6000, 6000] → mean = 6000
+
+Southeast: [6000, 6000] → mean = 6000
+
+Southwest: [1000, 2000] → mean = 1500
+
+Act: Calculate averages and sort.
+
+Assert: Both Northwest and Southeast share the highest mean (6000). Output may list them in either order but both must be first, e.g.:
+Northwest, Southeast, Northeast, Southwest
+or
+Southeast, Northwest, Northeast, Southwest
+
+Test 4: All averages are equal
+
+Arrange: Dataset:
+
+Northeast: [2000, 2000] → mean = 2000
+
+Northwest: [2000, 2000] → mean = 2000
+
+Southeast: [2000, 2000] → mean = 2000
+
+Southwest: [2000, 2000] → mean = 2000
+
+Act: Calculate averages and sort.
+
+Assert: Since all averages are equal, any order of the 4 regions is acceptable.
+
+
+Problem 17 Test: Do Southerners smoke more than Northerners, and at what average age?
+
+Test 1: Southerners smoke more at a younger average age
+
+Arrange: Dataset of clients with age and smoker status:
+
+Southeast: ages [20 (smoker), 25 (smoker)]
+
+Southwest: ages [30 (smoker)]
+
+Northeast: ages [40 (smoker)]
+
+Northwest: ages [50 (non-smoker)]
+
+Act: Count smokers in South = 3 (avg age = 25), smokers in North = 1 (avg age = 40).
+
+Assert: Southerners smoke more, and the average age when this is true is 25.
+Output: The statement is true: Southerners smoke more than Northerners, at an average age of 25.
+
+Test 2: Northerners smoke more (statement false)
+
+Arrange: Dataset:
+
+Southeast: ages [30 (smoker)]
+
+Southwest: ages [35 (non-smoker)]
+
+Northeast: ages [40 (smoker), 45 (smoker)]
+
+Northwest: ages [50 (smoker)]
+
+Act: Count smokers in South = 1 (avg age = 30), smokers in North = 3 (avg age ≈ 45).
+
+Assert: Southerners do not smoke more. Output:
+The statement is false: Northerners smoke more than Southerners.
+
+Test 3: Equal proportions of smokers (statement false)
+
+Arrange: Dataset:
+
+South: Southeast [20 (smoker)], Southwest [30 (smoker)] → 2 smokers
+
+North: Northeast [40 (smoker)], Northwest [50 (smoker)] → 2 smokers
+
+Act: Compare totals (South = 2, North = 2).
+
+Assert: Proportions are equal, so Southerners do not smoke more. Output:
+The statement is false: Southerners do not smoke more than Northerners.
+
+
+Problem 19 Test: Do Southerners average more children than Northerners, and at what average age?
+
+Test 1: Southerners average more children (true)
+
+Arrange: Dataset with children and ages:
+
+Southeast: ages [20, 25], children [2, 3] → mean children = 2.5
+
+Southwest: ages [30], children [2] → mean children = 2
+
+Northeast: ages [40], children [1] → mean children = 1
+
+Northwest: ages [50], children [0] → mean children = 0
+
+Act: Calculate averages. South = 2.25 children, North = 0.5 children.
+
+Assert: The output should be:
+The statement is true: Southerners average more children than Northerners, at an average age of 25.
+
+Test 2: Northerners average more children (false)
+
+Arrange: Dataset:
+
+Southeast: ages [30], children [1] → mean = 1
+
+Southwest: ages [35], children [0] → mean = 0
+
+Northeast: ages [40, 45], children [2, 3] → mean = 2.5
+
+Northwest: ages [50], children [2] → mean = 2
+
+Act: South = 0.5 children, North = 2.25 children.
+
+Assert: The output should be:
+The statement is false: Southerners do not average more children than Northerners.
+
+Test 3: Equal averages (false)
+
+Arrange: Dataset:
+
+Southeast: ages [20], children [2]
+
+Southwest: ages [30], children [0] → South mean = 1
+
+Northeast: ages [40], children [2]
+
+Northwest: ages [50], children [0] → North mean = 1
+
+Act: South = 1, North = 1.
+
+Assert: The output should be:
+The statement is false: Southerners do not average more children than Northerners.
+
+
+Problem 21 Test: Regression of charges vs. number of children
+
+Test 1: Normal dataset with positive correlation
+
+Arrange: Dataset of pairs (children, charges):
+
+(0, 2000), (1, 4000), (2, 6000), (3, 8000)
+
+Act: Perform regression.
+
+Regression line ≈ y = 2000 + 2000x
+
+Pearson r ≈ 1.0 (perfect correlation)
+
+Apply to 22 new charges → output corresponding (x, y) values using regression line.
+
+Assert: The output should be:
+Regression equation: y = 2000 + 2000x  
+Pearson r = 1.0  
+Predicted values for 22 charges: [(x1, y1), (x2, y2), …, (x22, y22)]
+
+
+Test 2: Dataset with no correlation
+
+Arrange: Dataset: (0, 3000), (1, 2800), (2, 3100), (3, 2900)
+
+Act: Regression line will be nearly flat (very small slope). Pearson r ≈ 0.
+
+Assert: The output should be:
+Regression equation: y = [constant] + [near 0 slope] * x  
+Pearson r ≈ 0  
+Predicted values for 22 charges: [(x1, y1), (x2, y2), …]
+
+
+Test 3: Dataset with negative correlation
+
+Arrange: Dataset: (0, 8000), (1, 6000), (2, 4000), (3, 2000)
+
+Act: Regression line ≈ y = 8000 - 2000x. Pearson r ≈ -1.0.
+
+Assert: The output should be:
+Regression equation: y = 8000 - 2000x  
+Pearson r = -1.0  
+Predicted values for 22 charges: [(x1, y1), (x2, y2), …]
